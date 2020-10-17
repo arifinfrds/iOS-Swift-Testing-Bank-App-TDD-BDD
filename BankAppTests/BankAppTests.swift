@@ -14,6 +14,11 @@ struct Account {
     mutating func deposit(amount: Double) {
         self.balance += amount
     }
+    
+    mutating func withdraw(amount: Double) -> Double {
+        self.balance -= amount
+        return amount
+    }
 }
 
 class BankAppTests: XCTestCase {
@@ -35,6 +40,21 @@ class BankAppTests: XCTestCase {
         
         // then
         XCTAssertEqual(sut.balance, 100)
+    }
+    
+    func test_Account_WhenWithdrawWithSmallerAmountThanBalance_ShouldReturnTheAmountAndDecreaseTheBalanceByAmount() {
+        // given
+        var sut = Account()
+        let depositAmount = 120.0
+        let withdrawAmount = 50.0
+        
+        // when
+        sut.deposit(amount: 120)
+        let withdrawedAmount = sut.withdraw(amount: withdrawAmount)
+        
+        // then
+        XCTAssertEqual(withdrawedAmount, withdrawAmount)
+        XCTAssertEqual(sut.balance, (depositAmount - withdrawAmount))
     }
 
 }
