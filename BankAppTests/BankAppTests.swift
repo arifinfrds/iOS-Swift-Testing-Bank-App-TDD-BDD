@@ -11,11 +11,18 @@ import XCTest
 struct Account {
     var balance = 0.0
     
+    enum Error: Swift.Error {
+        case invalidWithdrawAmount
+    }
+    
     mutating func deposit(amount: Double) {
         self.balance += amount
     }
     
-    mutating func withdraw(amount: Double) -> Double {
+    mutating func withdraw(amount: Double) throws -> Double {
+        if amount > balance {
+            throw Account.Error.invalidWithdrawAmount
+        }
         self.balance -= amount
         return amount
     }
@@ -50,11 +57,32 @@ class BankAppTests: XCTestCase {
         
         // when
         sut.deposit(amount: 120)
-        let withdrawedAmount = sut.withdraw(amount: withdrawAmount)
+        let withdrawedAmount = try! sut.withdraw(amount: withdrawAmount)
         
         // then
         XCTAssertEqual(withdrawedAmount, withdrawAmount)
         XCTAssertEqual(sut.balance, (depositAmount - withdrawAmount))
+    }
+    
+    func test_Account_WhenWithdrawWithBiggerAmountThanBalance_ShouldThrowInvalidWithdrawAmount() {
+        // given
+        var sut = Account()
+        let deposit = 120.0
+        let withdraw = 140.0
+        var capturedError: Account.Error?
+        
+        // when
+        sut.deposit(amount: deposit)
+        
+        do {
+            _ = try sut.withdraw(amount: withdraw)
+        } catch(let error) {
+            capturedError = error as? Account.Error
+        }
+        
+        // then
+        XCTAssertNotNil(capturedError)
+        XCTAssertEqual(capturedError!, .invalidWithdrawAmount)
     }
 
 }
