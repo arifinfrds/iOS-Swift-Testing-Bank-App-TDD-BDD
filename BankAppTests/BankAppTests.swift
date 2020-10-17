@@ -8,26 +8,6 @@
 import XCTest
 @testable import BankApp
 
-struct Account {
-    var balance = 0.0
-    
-    enum Error: Swift.Error {
-        case invalidWithdrawAmount
-    }
-    
-    mutating func deposit(amount: Double) {
-        self.balance += amount
-    }
-    
-    mutating func withdraw(amount: Double) throws -> Double {
-        if amount > balance {
-            throw Account.Error.invalidWithdrawAmount
-        }
-        self.balance -= amount
-        return amount
-    }
-}
-
 class BankAppTests: XCTestCase {
 
     func test_Account_WhenInitialized_ShouldHaveBalanzeZero() {

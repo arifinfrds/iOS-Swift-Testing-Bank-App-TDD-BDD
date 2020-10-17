@@ -15,6 +15,7 @@
 		92B10839253A9FE1004B9D33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B10837253A9FE1004B9D33 /* LaunchScreen.storyboard */; };
 		92B10844253A9FE1004B9D33 /* BankAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B10843253A9FE1004B9D33 /* BankAppTests.swift */; };
 		92B1084F253A9FE1004B9D33 /* BankAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B1084E253A9FE1004B9D33 /* BankAppUITests.swift */; };
+		92B10861253AA654004B9D33 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B10860253AA654004B9D33 /* Amount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		92B1084A253A9FE1004B9D33 /* BankAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B1084E253A9FE1004B9D33 /* BankAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppUITests.swift; sourceTree = "<group>"; };
 		92B10850253A9FE1004B9D33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92B10860253AA654004B9D33 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		92B1082B253A9FE0004B9D33 /* BankApp */ = {
 			isa = PBXGroup;
 			children = (
+				92B1085F253AA635004B9D33 /* domain */,
 				92B1082C253A9FE0004B9D33 /* AppDelegate.swift */,
 				92B1082E253A9FE0004B9D33 /* SceneDelegate.swift */,
 				92B10830253A9FE0004B9D33 /* ViewController.swift */,
@@ -126,6 +129,14 @@
 				92B10850253A9FE1004B9D33 /* Info.plist */,
 			);
 			path = BankAppUITests;
+			sourceTree = "<group>";
+		};
+		92B1085F253AA635004B9D33 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				92B10860253AA654004B9D33 /* Amount.swift */,
+			);
+			path = domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				92B10831253A9FE0004B9D33 /* ViewController.swift in Sources */,
 				92B1082D253A9FE0004B9D33 /* AppDelegate.swift in Sources */,
 				92B1082F253A9FE0004B9D33 /* SceneDelegate.swift in Sources */,
+				92B10861253AA654004B9D33 /* Amount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
