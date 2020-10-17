@@ -26,7 +26,7 @@ class BankAppTests: XCTestCase {
         XCTAssertEqual(sut.balance, 0.0)
     }
     
-    func test_Accoint_WhenDepositWithCertainAmount_ShouldUpdateTheBalance() {
+    func test_Account_WhenDepositWithCertainAmount_ShouldUpdateTheBalance() {
         // given
         var sut = Account()
         
