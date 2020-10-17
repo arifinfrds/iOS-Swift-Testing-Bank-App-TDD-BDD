@@ -84,5 +84,24 @@ class BankAppTests: XCTestCase {
         XCTAssertNotNil(capturedError)
         XCTAssertEqual(capturedError!, .invalidWithdrawAmount)
     }
+    
+    func test_Account_WhenInitializedAndImmediatelyWithdraw_ShouldThrowInvalidWithdrawAmount() {
+        // given
+        var sut = Account()
+        let withdraw = 140.0
+        var capturedError: Account.Error?
+        
+        // when
+        
+        do {
+            _ = try sut.withdraw(amount: withdraw)
+        } catch(let error) {
+            capturedError = error as? Account.Error
+        }
+        
+        // then
+        XCTAssertNotNil(capturedError)
+        XCTAssertEqual(capturedError!, .invalidWithdrawAmount)
+    }
 
 }
