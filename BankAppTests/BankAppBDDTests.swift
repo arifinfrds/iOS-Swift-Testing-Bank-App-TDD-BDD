@@ -1,38 +1,47 @@
 //
-//  BankAppTests.swift
+//  BankAppBDDTests.swift
 //  BankAppTests
 //
-//  Created by Arifin Firdaus on 17/10/20.
+//  Created by Arifin Firdaus on 22/10/20.
 //
 
 import XCTest
 @testable import BankApp
 
-/// TDD
-class BankAppTests: XCTestCase {
+class Given_Create_Bank_Account: XCTestCase {
+    var sut: Account!
 
-    func test_Account_WhenInitialized_ShouldHaveBalanzeZero() {
-        // when
-        let sut = Account()
+    override func setUp() {
+        super.setUp()
         
-        // then
+        self.sut = Account()
+    }
+}
+
+
+class When_Initialized: Given_Create_Bank_Account {
+    
+    func test_ShouldHaveBalanzeZero() {
         XCTAssertEqual(sut.balance, 0.0)
     }
+}
+
+
+class When_DepositWithCertainAmount: Given_Create_Bank_Account {
     
-    func test_Account_WhenDepositWithCertainAmount_ShouldUpdateTheBalance() {
-        // given
-        var sut = Account()
-        
+    func test_ShouldUpdateTheBalance() {
         // when
         sut.deposit(amount: 100)
         
         // then
         XCTAssertEqual(sut.balance, 100)
     }
+}
+
+
+class When_WithdrawWithSmallerAmountThanBalance: Given_Create_Bank_Account {
     
-    func test_Account_WhenWithdrawWithSmallerAmountThanBalance_ShouldReturnTheAmountAndDecreaseTheBalanceByAmount() {
-        // given
-        var sut = Account()
+    func test_ShouldReturnTheAmountAndDecreaseTheBalanceByAmount() {
         let depositAmount = 120.0
         let withdrawAmount = 50.0
         
@@ -44,10 +53,12 @@ class BankAppTests: XCTestCase {
         XCTAssertEqual(withdrawedAmount, withdrawAmount)
         XCTAssertEqual(sut.balance, (depositAmount - withdrawAmount))
     }
+}
+
+
+class When_WithdrawWithBiggerAmountThanBalance: Given_Create_Bank_Account {
     
-    func test_Account_WhenWithdrawWithBiggerAmountThanBalance_ShouldThrowInvalidWithdrawAmount() {
-        // given
-        var sut = Account()
+    func test_ShouldThrowInvalidWithdrawAmount() {
         let deposit = 120.0
         let withdraw = 140.0
         var capturedError: Account.Error?
@@ -66,9 +77,12 @@ class BankAppTests: XCTestCase {
         XCTAssertEqual(capturedError!, .invalidWithdrawAmount)
     }
     
-    func test_Account_WhenInitializedAndImmediatelyWithdraw_ShouldThrowInvalidWithdrawAmount() {
-        // given
-        var sut = Account()
+}
+
+
+class When_InitializedAndImmediatelyWithdraw: Given_Create_Bank_Account {
+    
+    func test_ShouldThrowInvalidWithdrawAmount() {
         let withdraw = 140.0
         var capturedError: Account.Error?
         
@@ -84,5 +98,4 @@ class BankAppTests: XCTestCase {
         XCTAssertNotNil(capturedError)
         XCTAssertEqual(capturedError!, .invalidWithdrawAmount)
     }
-
 }

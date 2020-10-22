@@ -17,6 +17,7 @@
 		92B1084F253A9FE1004B9D33 /* BankAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B1084E253A9FE1004B9D33 /* BankAppUITests.swift */; };
 		92B10861253AA654004B9D33 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B10860253AA654004B9D33 /* Amount.swift */; };
 		92B10869253AA8E1004B9D33 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92B10868253AA8E1004B9D33 /* README.md */; };
+		92CFA95325417DBF00F82D2F /* BankAppBDDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA95225417DBF00F82D2F /* BankAppBDDTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		92B10850253A9FE1004B9D33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92B10860253AA654004B9D33 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
 		92B10868253AA8E1004B9D33 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		92CFA95225417DBF00F82D2F /* BankAppBDDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAppBDDTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				92B10843253A9FE1004B9D33 /* BankAppTests.swift */,
+				92CFA95225417DBF00F82D2F /* BankAppBDDTests.swift */,
 				92B10845253A9FE1004B9D33 /* Info.plist */,
 			);
 			path = BankAppTests;
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92CFA95325417DBF00F82D2F /* BankAppBDDTests.swift in Sources */,
 				92B10844253A9FE1004B9D33 /* BankAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
