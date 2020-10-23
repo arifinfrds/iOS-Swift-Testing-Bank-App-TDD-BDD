@@ -43,3 +43,30 @@ class When_InitializedAndImmediatelyWithdraw: Given_Create_Bank_Account {
 }
 
 ```
+
+My Version: 
+```swift
+class BankAppTests: XCTestCase {
+    
+    func test_Account_WhenInitializedAndImmediatelyWithdraw_ShouldThrowInvalidWithdrawAmount() {
+        // given
+        var sut = Account()
+        let withdraw = 140.0
+        var capturedError: Account.Error?
+        
+        // when
+        
+        do {
+            _ = try sut.withdraw(amount: withdraw)
+        } catch(let error) {
+            capturedError = error as? Account.Error
+        }
+        
+        // then
+        XCTAssertNotNil(capturedError)
+        XCTAssertEqual(capturedError!, .invalidWithdrawAmount)
+    }
+
+}
+
+```
